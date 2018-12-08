@@ -8,9 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.example.service.EmployeeService;
+import com.example.service.EmployeeServiceImpl;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.example.service")
+@ComponentScan(basePackages = "com.example.service ,com.example.dao")
 public class CoreApplication {
 
 	public static Logger logger = LoggerFactory.getLogger(CoreApplication.class);
@@ -26,8 +27,9 @@ public class CoreApplication {
 
 		logger.info("count :: " + ctx.getBeanDefinitionCount());
 
-		EmployeeService employeeService = ctx.getBean(EmployeeService.class);
-		employeeService.getEnploye();
+		EmployeeService employeeService = ctx.getBean(EmployeeServiceImpl.class);
+		employeeService.getEmployee();
+		;
 
 	}
 }
